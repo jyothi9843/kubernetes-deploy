@@ -1,1 +1,19 @@
-hefbhebf henj
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-springboot
+  template:
+    metadata:
+      labels:
+        app: backend-springboot                # Pod labels
+    spec:
+      containers:
+      - name: backend-springboot
+        image: techcoms/backend-springboot-maven-war:1
+        ports:
+        - containerPort: 8080
